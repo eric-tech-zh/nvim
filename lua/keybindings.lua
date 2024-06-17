@@ -1,65 +1,71 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+-- TODO: vim.g.mapleader = " "
+-- TODO: vim.g.maplocalleader = " "
 local map = vim.api.nvim_set_keymap
 -- 复用 opt 参数
 local opt = { noremap = true, silent = true }
 
+-- jj表示ESC
+map("i", "jj", "<ESC>", opt)
+
+-- *搜索后不自动跳到下一个
+map("n", "*", "*N", opt)
+
 -- 取消 s 默认功能
-map("n", "s", "", opt)
+-- TODO: map("n", "s", "", opt)
 -- windows 分屏快捷键
-map("n", "sv", ":vsp<CR>", opt)
-map("n", "sh", ":sp<CR>", opt)
+-- TODO: map("n", "<C-s>v", ":vsp<CR>", opt)
+-- TODO: map("n", "<C-s>h", ":sp<CR>", opt)
 -- 关闭当前laga
-map("n", "sc", "<C-w>c", opt)
+-- TODO: map("n", "sc", "<C-w>c", opt)
 -- 关闭其他
-map("n", "so", "<C-w>o", opt)
+-- TODO: map("n", "so", "<C-w>o", opt)
 -- Alt + hjkl  窗口之间跳转
-map("n", "<A-h>", "<C-w>h", opt)
-map("n", "<A-j>", "<C-w>j", opt)
-map("n", "<A-k>", "<C-w>k", opt)
-map("n", "<A-l>", "<C-w>l", opt)
+-- TODO: map("n", "<A-h>", "<C-w>h", opt)
+-- TODO: map("n", "<A-j>", "<C-w>j", opt)
+-- TODO: map("n", "<A-k>", "<C-w>k", opt)
+-- TODO: map("n", "<A-l>", "<C-w>l", opt)
 
 -- 左右比例控制
 map("n", "<C-Left>", ":vertical resize -2<CR>", opt)
 map("n", "<C-Right>", ":vertical resize +2<CR>", opt)
-map("n", "s,", ":vertical resize -20<CR>", opt)
-map("n", "s.", ":vertical resize +20<CR>", opt)
+-- TODO: map("n", "s,", ":vertical resize -20<CR>", opt)
+-- TODO: map("n", "s.", ":vertical resize +20<CR>", opt)
 -- 上下比例
-map("n", "sj", ":resize +10<CR>", opt)
-map("n", "sk", ":resize -10<CR>", opt)
+-- TODO: map("n", "sj", ":resize +10<CR>", opt)
+-- TODO: map("n", "sk", ":resize -10<CR>", opt)
 map("n", "<C-Down>", ":resize +2<CR>", opt)
 map("n", "<C-Up>", ":resize -2<CR>", opt)
 -- 等比例
-map("n", "s=", "<C-w>=", opt)
+-- TODO: map("n", "s=", "<C-w>=", opt)
 
 -- Terminal相关
 map("n", "<leader>t", "<cmd>Lspsaga term_toggle<CR>", opt)
 map("t", "<Esc>", "<C-\\><C-n>", opt)
 
 -- visual模式下缩进代码
-map("v", "<", "<gv", opt)
-map("v", ">", ">gv", opt)
+-- TODO: map("v", "<", "<gv", opt)
+-- TODO: map("v", ">", ">gv", opt)
 -- 上下移动选中文本
 map("v", "J", ":move '>+1<CR>gv-gv", opt)
 map("v", "K", ":move '<-2<CR>gv-gv", opt)
 
 -- 上下滚动浏览
-map("n", "<C-j>", "4j", opt)
-map("n", "<C-k>", "4k", opt)
+-- TODO: map("n", "<C-j>", "4j", opt)
+-- TODO: map("n", "<C-k>", "4k", opt)
 -- ctrl u / ctrl + d  只移动9行，默认移动半屏
-map("n", "<C-u>", "9k", opt)
-map("n", "<C-d>", "9j", opt)
+-- TODO: map("n", "<C-u>", "9k", opt)
+-- TODO: map("n", "<C-d>", "9j", opt)
 
 -- 在visual 模式里粘贴不要复制
-map("v", "p", '"_dP', opt)
+-- TODO: map("v", "p", '"_dP', opt)
 
 -- 退出
-map("n", "q", ":q<CR>", opt)
-map("n", "qq", ":q!<CR>", opt)
+-- TODO: map("n", "q", ":q<CR>", opt)
+-- TODO: map("n", "qq", ":q!<CR>", opt)
 
 -- insert 模式下，跳到行首行尾
-map("i", "<C-h>", "<ESC>I", opt)
-map("i", "<C-l>", "<ESC>A", opt)
+-- TODO: map("i", "<C-h>", "<ESC>I", opt)
+-- TODO: map("i", "<C-l>", "<ESC>A", opt)
 
 -- bufferline
 -- 左右Tab切换
@@ -67,25 +73,27 @@ map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
 map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
 -- 关闭
 --"moll/vim-bbye"
-map("n", "<C-w>", ":Bdelete!<CR>", opt)
-map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
-map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
-map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
+-- TODO: map("n", "<C-w>", ":Bdelete!<CR>", opt)
+-- TODO1: map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
+-- TODO1: map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
+-- TODO1: map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
 
 -- Telescope
 -- 查找文件
-map("n", "<C-p>", ":Telescope find_files<CR>", opt)
+map("n", "<leader>p", ":Telescope find_files<CR>", opt)
 -- 全局搜索
-map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
+map("n", "<leader>f", ":Telescope live_grep<CR>", opt)
+-- 光标搜索
+map("n", "<leader>\\", ":Telescope grep_string<CR>", opt)
 
 -- nvim-tree
--- alt + m 键打开关闭tree
-map("n", "<A-m>", ":NvimTreeToggle<CR>", opt)
+-- 打开关闭tree
+map("n", "<leader>e", ":NvimTreeToggle<CR>", opt)
 
 -- nvim-dap
-map("n", "<leader>bb", ":GoBreakToggle<CR>", opt)
-map("n", "<leader>dd", ":GoDebug<CR>", opt)
-map("n", "<leader>de", ":GoDebug -s<CR>", opt)
+-- TODO1: map("n", "<leader>bb", ":GoBreakToggle<CR>", opt)
+-- TODO1: map("n", "<leader>dd", ":GoDebug<CR>", opt)
+-- TODO1: map("n", "<leader>de", ":GoDebug -s<CR>", opt)
 -- 插件快捷键
 local pluginKeys = {}
 
